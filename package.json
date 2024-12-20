@@ -11,6 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@example/portfolio": "file:",
     "astro": "^4.13.0"
   }
 }

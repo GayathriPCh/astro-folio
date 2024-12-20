@@ -10,16 +10,29 @@ const { align = 'center', tagline, title } = Astro.props;
 
 <div class:list={['hero stack gap-4', align]}>
 	<div class="stack gap-2">
-		<h1 class="title">{title}</h1>
+		<h1 class="title" data-text={title}>{title}</h1>
 		{tagline && <p class="tagline">{tagline}</p>}
 	</div>
 	<slot />
 </div>
 
 <style>
+	@font-face {
+		font-family: "Ease";
+		src: url('./EaseBold-AR892.otf')format('opentype');
+	}
+	@font-face {
+		font-family: "Audiowide";
+		src: url('./Audiowide-en4g.ttf')format('truetype');
+	}
+	@font-face {
+		font-family: "Lang";
+		src: url('./Lang.otf')format('opentype');
+	}
 	.hero {
 		font-size: var(--text-lg);
 		text-align: center;
+		font-family: 'Audiowide', sans-serif;
 	}
 
 	.title,
@@ -29,8 +42,36 @@ const { align = 'center', tagline, title } = Astro.props;
 	}
 
 	.title {
+		font-family: 'Lang', sans-serif;
 		font-size: var(--text-3xl);
-		color: var(--gray-0);
+		background: linear-gradient(90deg,rgba(145,82,225,1)  0%, rgb(45, 239, 229) 100%);		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		position: relative;
+		display: inline-block;
+	}
+
+	.title::after {
+		content: attr(data-text);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(120deg, transparent 0%, transparent 6%, rgba(0, 247, 255, 0.989) 30%, transparent 40%, transparent 100%);
+		background-size: 200% 100%;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: shine 5s infinite linear;
+	}
+
+	@keyframes shine {
+		0% {
+			background-position: 200% 0;
+		}
+		100% {
+			background-position: -200% 0;
+		}
 	}
 
 	@media (min-width: 50em) {
