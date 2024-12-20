@@ -9,7 +9,6 @@ import CallToAction from '../components/CallToAction.astro';
 import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 
 // Page section components
@@ -34,11 +33,7 @@ const projects = (await getCollection('work'))
 					tagline="I convert human jargon into code."
 					align="start"
 				>
-					<div class="roles">
-						<Pill><Icon icon="code" size="1.33em" />Fire-breathing Developer</Pill> 
 					
-						<Pill><Icon icon="pencil-line" size="1.33em" /> Student at KLH</Pill>
-					</div>
 				</Hero>
 
 				<div class="image-container">
